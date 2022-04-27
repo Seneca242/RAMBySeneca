@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Character Table View Controller-->
         <scene sceneID="ehO-sm-D3w">
             <objects>
-                <tableViewController id="RUT-PL-LXS" sceneMemberID="viewController">
+                <tableViewController id="RUT-PL-LXS" customClass="CharacterTableViewController" customModule="RAMBySeneca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ZVY-jp-Auz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,13 +70,13 @@
         <!--Episodes-->
         <scene sceneID="HAL-mK-v2L">
             <objects>
-                <tableViewController id="azw-oj-Nr3" sceneMemberID="viewController">
+                <tableViewController id="azw-oj-Nr3" customClass="EpisodesTableViewController" customModule="RAMBySeneca" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="0cI-vC-9bS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episode" textLabel="Nez-qq-Rzm" style="IBUITableViewCellStyleDefault" id="DPT-0g-GpE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="episode" textLabel="Nez-qq-Rzm" style="IBUITableViewCellStyleDefault" id="DPT-0g-GpE" customClass="CharacterTableViewCell" customModule="RAMBySeneca" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DPT-0g-GpE" id="Q7C-gq-mCf">
@@ -109,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="2617" y="114"/>
         </scene>
-        <!--View Controller-->
+        <!--Episode Detail View Controller-->
         <scene sceneID="53m-6I-KgG">
             <objects>
-                <viewController id="zBn-ft-Az7" sceneMemberID="viewController">
+                <viewController id="zBn-ft-Az7" customClass="EpisodeDetailViewController" customModule="RAMBySeneca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PFf-x8-OcD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="3347.826086956522" y="114.50892857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Detail View Controller-->
         <scene sceneID="s48-hJ-ebi">
             <objects>
-                <viewController id="tMM-Lp-ArJ" sceneMemberID="viewController">
+                <viewController id="tMM-Lp-ArJ" customClass="CharacterDetailViewController" customModule="RAMBySeneca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="46q-Lp-Zm3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="4066.666666666667" y="114.50892857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Detail View Controller-->
         <scene sceneID="qou-VF-oPH">
             <objects>
-                <viewController id="d69-2t-MLp" sceneMemberID="viewController">
+                <viewController id="d69-2t-MLp" customClass="CharacterDetailViewController" customModule="RAMBySeneca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZfC-q8-jfp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

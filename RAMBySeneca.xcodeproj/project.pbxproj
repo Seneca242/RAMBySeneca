@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0499FB7C2819C40500764B8A /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB7B2819C40500764B8A /* CharacterTableViewController.swift */; };
+		0499FB7E2819C87900764B8A /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB7D2819C87900764B8A /* CharacterDetailViewController.swift */; };
+		0499FB802819E1F000764B8A /* EpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB7F2819E1F000764B8A /* EpisodesTableViewController.swift */; };
+		0499FB822819E23800764B8A /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB812819E23800764B8A /* EpisodeDetailViewController.swift */; };
+		0499FB842819E31500764B8A /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB832819E31500764B8A /* CharacterTableViewCell.swift */; };
+		0499FB8D2819E3FE00764B8A /* R&MModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB8C2819E3FE00764B8A /* R&MModel.swift */; };
+		0499FB902819E42C00764B8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0499FB8F2819E42C00764B8A /* NetworkManager.swift */; };
 		04A7BB092805FDD200A10636 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7BB082805FDD200A10636 /* AppDelegate.swift */; };
 		04A7BB0B2805FDD200A10636 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A7BB0A2805FDD200A10636 /* SceneDelegate.swift */; };
 		04A7BB102805FDD200A10636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A7BB0E2805FDD200A10636 /* Main.storyboard */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0499FB7B2819C40500764B8A /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
+		0499FB7D2819C87900764B8A /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		0499FB7F2819E1F000764B8A /* EpisodesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesTableViewController.swift; sourceTree = "<group>"; };
+		0499FB812819E23800764B8A /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		0499FB832819E31500764B8A /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		0499FB8C2819E3FE00764B8A /* R&MModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R&MModel.swift"; sourceTree = "<group>"; };
+		0499FB8F2819E42C00764B8A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		04A7BB052805FDD200A10636 /* RAMBySeneca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAMBySeneca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A7BB082805FDD200A10636 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A7BB0A2805FDD200A10636 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +49,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0499FB852819E33400764B8A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0499FB7B2819C40500764B8A /* CharacterTableViewController.swift */,
+				0499FB7D2819C87900764B8A /* CharacterDetailViewController.swift */,
+				0499FB7F2819E1F000764B8A /* EpisodesTableViewController.swift */,
+				0499FB812819E23800764B8A /* EpisodeDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		0499FB862819E34100764B8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0499FB832819E31500764B8A /* CharacterTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0499FB872819E36000764B8A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				04A7BB0E2805FDD200A10636 /* Main.storyboard */,
+				04A7BB132805FDD500A10636 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0499FB882819E36B00764B8A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				04A7BB112805FDD500A10636 /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0499FB892819E37900764B8A /* Supportings */ = {
+			isa = PBXGroup;
+			children = (
+				04A7BB082805FDD200A10636 /* AppDelegate.swift */,
+				04A7BB0A2805FDD200A10636 /* SceneDelegate.swift */,
+				04A7BB162805FDD500A10636 /* Info.plist */,
+			);
+			path = Supportings;
+			sourceTree = "<group>";
+		};
+		0499FB8B2819E3D600764B8A /* R&MModel */ = {
+			isa = PBXGroup;
+			children = (
+				0499FB8C2819E3FE00764B8A /* R&MModel.swift */,
+			);
+			path = "R&MModel";
+			sourceTree = "<group>";
+		};
+		0499FB8E2819E41400764B8A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0499FB8F2819E42C00764B8A /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		04A7BAFC2805FDD100A10636 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +130,13 @@
 		04A7BB072805FDD200A10636 /* RAMBySeneca */ = {
 			isa = PBXGroup;
 			children = (
-				04A7BB082805FDD200A10636 /* AppDelegate.swift */,
-				04A7BB0A2805FDD200A10636 /* SceneDelegate.swift */,
-				04A7BB0E2805FDD200A10636 /* Main.storyboard */,
-				04A7BB112805FDD500A10636 /* Assets.xcassets */,
-				04A7BB132805FDD500A10636 /* LaunchScreen.storyboard */,
-				04A7BB162805FDD500A10636 /* Info.plist */,
+				0499FB852819E33400764B8A /* ViewControllers */,
+				0499FB862819E34100764B8A /* Views */,
+				0499FB8B2819E3D600764B8A /* R&MModel */,
+				0499FB8E2819E41400764B8A /* Services */,
+				0499FB872819E36000764B8A /* Storyboards */,
+				0499FB882819E36B00764B8A /* Sources */,
+				0499FB892819E37900764B8A /* Supportings */,
 			);
 			path = RAMBySeneca;
 			sourceTree = "<group>";
@@ -135,8 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0499FB902819E42C00764B8A /* NetworkManager.swift in Sources */,
 				04A7BB092805FDD200A10636 /* AppDelegate.swift in Sources */,
+				0499FB842819E31500764B8A /* CharacterTableViewCell.swift in Sources */,
+				0499FB822819E23800764B8A /* EpisodeDetailViewController.swift in Sources */,
+				0499FB7E2819C87900764B8A /* CharacterDetailViewController.swift in Sources */,
+				0499FB802819E1F000764B8A /* EpisodesTableViewController.swift in Sources */,
+				0499FB7C2819C40500764B8A /* CharacterTableViewController.swift in Sources */,
 				04A7BB0B2805FDD200A10636 /* SceneDelegate.swift in Sources */,
+				0499FB8D2819E3FE00764B8A /* R&MModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KGB5T28U9V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RAMBySeneca/Info.plist;
+				INFOPLIST_FILE = RAMBySeneca/Supportings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -313,7 +397,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KGB5T28U9V;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RAMBySeneca/Info.plist;
+				INFOPLIST_FILE = RAMBySeneca/Supportings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
