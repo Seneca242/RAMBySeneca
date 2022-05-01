@@ -10,8 +10,14 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var characterImageView: UIImageView!
+    @IBOutlet weak var characterImageView: UIImageView! {
+        didSet {
+            characterImageView.contentMode = .scaleAspectFit
+            characterImageView.layer.cornerRadius = characterImageView.frame.width / 2
+        }
+    }
     
+
     
     func configure(with character: Characters?) {
         nameLabel.text = character?.name

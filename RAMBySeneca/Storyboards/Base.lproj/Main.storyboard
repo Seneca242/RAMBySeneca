@@ -43,6 +43,7 @@
                                         <constraint firstItem="uvA-i1-peu" firstAttribute="top" secondItem="yZy-Mx-1E6" secondAttribute="top" constant="10" id="Z3i-gZ-4qq"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Bfl-8G-DCv" secondAttribute="bottom" constant="10" id="cQz-yO-tnJ"/>
                                         <constraint firstAttribute="bottom" secondItem="uvA-i1-peu" secondAttribute="bottom" constant="10" id="h4o-IT-dqY"/>
+                                        <constraint firstItem="uvA-i1-peu" firstAttribute="width" secondItem="yZy-Mx-1E6" secondAttribute="height" multiplier="5:7" id="sb1-6j-Sni"/>
                                         <constraint firstItem="Bfl-8G-DCv" firstAttribute="top" secondItem="yZy-Mx-1E6" secondAttribute="topMargin" constant="10" id="tVA-wS-tgO"/>
                                         <constraint firstItem="Bfl-8G-DCv" firstAttribute="leading" secondItem="uvA-i1-peu" secondAttribute="trailing" constant="7" id="xPt-bi-2Og"/>
                                     </constraints>
@@ -217,7 +218,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F3C-iy-cIV">
-                                <rect key="frame" x="87" y="156" width="240" height="240"/>
+                                <rect key="frame" x="87" y="104" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="F3C-iy-cIV" secondAttribute="height" multiplier="1:1" id="nAs-OQ-fqS"/>
                                 </constraints>
@@ -263,8 +264,8 @@
         <scene sceneID="4v8-TJ-xfW">
             <objects>
                 <navigationController id="8GZ-pQ-WJn" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="GPq-9R-1oy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GPq-9R-1oy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">

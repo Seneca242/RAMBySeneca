@@ -14,6 +14,10 @@ class CharacterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData(from: APIManager.shared.apiUrl)
+//        tableView.backgroundColor = .black
+        
+        setupNavigationBar()
+        
     }
 
     // MARK: - Table view data source
@@ -86,6 +90,24 @@ class CharacterTableViewController: UITableViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    // MARK: - Setup Navigation bar
+    
+    private func setupNavigationBar() {
+        title = "Rick & Morty"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if #available(iOS 13.0, *) {
+            let navigationBar = UINavigationBarAppearance()
+            navigationBar.configureWithOpaqueBackground()
+            navigationBar.backgroundColor = .black
+            navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            navigationController?.navigationBar.standardAppearance = navigationBar
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
         }
     }
 }
