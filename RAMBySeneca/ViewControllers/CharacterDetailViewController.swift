@@ -24,8 +24,6 @@ class CharacterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchCharacterDescription(from: characterUrl)
-
-       
     }
     
 
@@ -55,9 +53,17 @@ class CharacterDetailViewController: UIViewController {
             case .success(let character):
                 self.character = character
                 self.characterDescriptionLabel.text = character.characterDescription
+                self.fetchImage(from: character.image)
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    private func fetchImage(from url: String?) {
+        guard let imageData = ImageNetworkManager.shared.fetchImage(from: url) else { return }
+        DispatchQueue.main.async {
+            self.imageView.image = UIImage(data: imageData)
         }
     }
 }
