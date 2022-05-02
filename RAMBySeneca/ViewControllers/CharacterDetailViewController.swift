@@ -9,10 +9,23 @@ import UIKit
 
 class CharacterDetailViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.layer.cornerRadius = imageView.frame.width / 2
+        }
+    }
+    
+    @IBOutlet weak var characterDescriptionLabel: UILabel!
+    
+    var characterUrl: String?
+//    var character: RickAndMorty?
+    var character: Characters?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchCharacterDescription(from: characterUrl)
 
-        // Do any additional setup after loading the view.
+       
     }
     
 
@@ -26,4 +39,25 @@ class CharacterDetailViewController: UIViewController {
     }
     */
 
+    
+    private func fetchCharacterDescription(from url: String?) {
+//        NetworkManager.shared.fetchData(from: url) { characters in
+//            switch characters {
+//            case .success(let character):
+//                self.character = character
+//                self.characterDescriptionLabel.text = character.results?.description
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        NetworkManager.shared.fetchCharacter(from: url) { characters in
+            switch characters {
+            case .success(let character):
+                self.character = character
+                self.characterDescriptionLabel.text = character.characterDescription
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

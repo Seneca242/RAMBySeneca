@@ -22,11 +22,18 @@ class CharacterTableViewCell: UITableViewCell {
     func configure(with character: Characters?) {
         nameLabel.text = character?.name
         
+//        DispatchQueue.global().async {
+//            guard let imageUrl = URL(string: character?.image ?? "") else { return }
+//            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+//            DispatchQueue.main.async { [weak self] in
+//                self?.characterImageView.image = UIImage(data: imageData)
+//            }
+//        }
+        
         DispatchQueue.global().async {
-            guard let imageUrl = URL(string: character?.image ?? "") else { return }
-            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-            DispatchQueue.main.async { [weak self] in
-                self?.characterImageView.image = UIImage(data: imageData)
+            guard let imageData = ImageNetworkManager.shared.fetchImage(from: character?.image) else { return }
+            DispatchQueue.main.async {
+                self.characterImageView.image = UIImage(data: imageData)
             }
         }
     }

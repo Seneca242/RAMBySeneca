@@ -26,6 +26,17 @@ struct Characters: Decodable {
     let image: String?
     let episode: [String]?
     let url: String?
+    
+    var characterDescription: String {
+        """
+        name: \(name ?? "")
+        status: \(status ?? "")
+        species: \(species ?? "")
+        gender: \(gender ?? "")
+        origin: \(origin?.name ?? "")
+        location: \(location?.name ?? "")
+        """
+    }
 }
 
 struct Location: Decodable {
@@ -57,3 +68,4 @@ struct Episode: Decodable {
 //enum URLS: String {
 //    case rickAndMortyAPI = "https://rickandmortyapi.com/api/character"
 //}
+
