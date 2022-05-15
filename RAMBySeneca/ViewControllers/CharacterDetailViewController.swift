@@ -17,53 +17,52 @@ class CharacterDetailViewController: UIViewController {
     
     @IBOutlet weak var characterDescriptionLabel: UILabel!
     
-    var characterUrl: String?
-//    var character: RickAndMorty?
     var character: Characters?
+    private var activityIndicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCharacterDescription(from: characterUrl)
+        navigationItem.title = character?.name
+        characterDescriptionLabel.text = character?.characterDescription
+        fetchImage(from: character?.image)
+        activityIndicatorView = showActivityIndicator(in: view)
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
-    private func fetchCharacterDescription(from url: String?) {
-//        NetworkManager.shared.fetchData(from: url) { characters in
-//            switch characters {
-//            case .success(let character):
-//                self.character = character
-//                self.characterDescriptionLabel.text = character.results?.description
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        NetworkManager.shared.fetchCharacter(from: url) { characters in
-            switch characters {
-            case .success(let character):
-                self.character = character
-                self.characterDescriptionLabel.text = character.characterDescription
-                self.fetchImage(from: character.image)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        guard let navigationController = segue.destination as? UINavigationController else { return }
+        guard let episodesTableVC = navigationController.topViewController as? EpisodesTableViewController else { return }
+        episodesTableVC.character = character
     }
     
     private func fetchImage(from url: String?) {
-        guard let imageData = ImageNetworkManager.shared.fetchImage(from: url) else { return }
-        DispatchQueue.main.async {
-            self.imageView.image = UIImage(data: imageData)
+        ImageNetworkManager.shared.fetchImage(from: url ?? "") { [weak self] result in
+            switch result {
+            case .success(let imageData):
+                self?.activityIndicatorView?.stopAnimating()
+                self?.imageView.image = UIImage(data: imageData)
+            case .failure(let error):
+                self?.imageView.image = UIImage(systemName: "camera.macro")
+                print(error)
+            }
         }
+    
+    }
+    
+    private func showActivityIndicator(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .white
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        
+        view.addSubview(activityIndicator)
+        return activityIndicator
     }
 }

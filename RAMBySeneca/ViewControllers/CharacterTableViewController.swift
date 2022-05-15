@@ -8,14 +8,26 @@
 import UIKit
 
 class CharacterTableViewController: UITableViewController {
-
+    
     private var rickAndMorty: RickAndMorty?
+    
+    // MARK: - UISearchController
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var filteredCharacter: [Characters] = []
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData(from: APIManager.shared.apiUrl)
-//        tableView.backgroundColor = .black
-        
+        tableView.backgroundColor = .black
+        setupSearchController()
         setupNavigationBar()
         
     }
@@ -23,12 +35,12 @@ class CharacterTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rickAndMorty?.results?.count ?? 0
+        return isFiltering ? filteredCharacter.count : rickAndMorty?.results?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CharacterTableViewCell
-        let characters = rickAndMorty?.results?[indexPath.row]
+        let characters = isFiltering ? filteredCharacter[indexPath.row] : rickAndMorty?.results?[indexPath.row]
         cell.configure(with: characters)
         return cell
     }
@@ -75,16 +87,23 @@ class CharacterTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let characterDetailVC = segue.destination as? CharacterDetailViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let character = rickAndMorty?.results?[indexPath.row]
-        characterDetailVC.characterUrl = character?.url
+        let character = isFiltering ? filteredCharacter[indexPath.row] : rickAndMorty?.results?[indexPath.row]
+        characterDetailVC.character = character
+    }
+    
+    
+    @IBAction func leafThroughAction(_ sender: UIBarButtonItem) {
+        sender.tag == 0
+        ? fetchData(from: rickAndMorty?.info?.prev)
+        : fetchData(from: rickAndMorty?.info?.next)
     }
     
     private func fetchData(from url: String?) {
-        NetworkManager.shared.fetchData(from: url) { results in
+        NetworkManager.shared.fetchData(from: url) { [weak self] results in
             switch results {
-            case .success(let character):
-                self.rickAndMorty = character
-                self.tableView.reloadData()
+            case .success(let rickAndMorty):
+                self?.rickAndMorty = rickAndMorty
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -107,5 +126,35 @@ class CharacterTableViewController: UITableViewController {
             navigationController?.navigationBar.standardAppearance = navigationBar
             navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
         }
+    }
+    
+    // MARK: - UISearchController method
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.barTintColor = .white
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.font = UIFont.boldSystemFont(ofSize: 17)
+            textField.textColor = .white
+        }
+    }
+}
+
+extension CharacterTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredCharacter = rickAndMorty?.results?.filter { character in
+            character.name!.lowercased().contains(searchText.lowercased())
+        } ?? []
+
+        tableView.reloadData()
     }
 }
