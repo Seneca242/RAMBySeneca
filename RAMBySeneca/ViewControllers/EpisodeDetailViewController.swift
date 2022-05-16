@@ -9,10 +9,36 @@ import UIKit
 
 class EpisodeDetailViewController: UIViewController {
 
+    @IBOutlet var titleAndDateLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    
+    var episode: Episode?
+    var characters: [Characters] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchCharacters(url: episode?.characters ?? [])
+        titleAndDateLabel.text = episode?.description
+        tableView.backgroundColor = UIColor(
+            red: 21/255,
+            green: 32/255,
+            blue: 66/255,
+            alpha: 1
+        )
+        title = episode?.episode
+    }
+    
+    private func fetchCharacters(url: [String]) {
+        url.forEach { url in
+            NetworkManager.shared.fetchCharacter(from: url) { [weak self] results in
+                switch results {
+                case .success(let character):
+                    self?.characters.append(character)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
 
@@ -26,4 +52,30 @@ class EpisodeDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension EpisodeDetailViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        characters.count
+        episode?.characters?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterUrl", for: indexPath) as? CharacterTableViewCell else { fatalError() }
+//        let characters = characters[indexPath.row]
+//        cell.configure(with: characters)
+        let characterUrl = episode?.characters?[indexPath.row]
+        NetworkManager.shared.fetchCharacter(from: characterUrl) { results in
+            switch results {
+            case .success(let character):
+                cell.configure(with: character)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        return cell
+    }
+    
+    
 }

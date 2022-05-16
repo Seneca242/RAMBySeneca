@@ -17,6 +17,7 @@ struct Info: Decodable {
 }
 
 struct Characters: Decodable {
+    let id: Int?
     let name: String?
     let status: String?
     let species: String?
@@ -59,7 +60,7 @@ struct Episode: Decodable {
     
     var description: String {
         """
-        Title: \(episode ?? "")
+        Title: \(name ?? "")
         Date: \(date ?? "")
         """
     }
