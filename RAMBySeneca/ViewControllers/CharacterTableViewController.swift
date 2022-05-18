@@ -125,6 +125,7 @@ class CharacterTableViewController: UITableViewController {
             
             navigationController?.navigationBar.standardAppearance = navigationBar
             navigationController?.navigationBar.scrollEdgeAppearance = navigationBar
+            navigationController?.navigationBar.tintColor = .white
         }
     }
     

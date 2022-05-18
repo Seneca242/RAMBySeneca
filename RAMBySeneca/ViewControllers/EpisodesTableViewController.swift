@@ -23,7 +23,7 @@ class EpisodesTableViewController: UITableViewController {
         )
         
         let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navBarAppearance.backgroundColor = UIColor(
             red: 21/255,
             green: 32/255,
@@ -31,7 +31,8 @@ class EpisodesTableViewController: UITableViewController {
             alpha: 0.7
         )
         navigationController?.navigationBar.standardAppearance = navBarAppearance
-        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
+        
     }
     // MARK: - Table view data source
 
@@ -95,7 +96,7 @@ class EpisodesTableViewController: UITableViewController {
     }
     */
 
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = episode[indexPath.row]
         performSegue(withIdentifier: "showEpisode", sender: episode)
     }

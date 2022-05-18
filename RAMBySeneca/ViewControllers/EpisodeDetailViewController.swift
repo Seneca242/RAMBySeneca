@@ -62,7 +62,7 @@ extension EpisodeDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterUrl", for: indexPath) as? CharacterTableViewCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "characterUrl", for: indexPath) as? CharacterTableViewCell else { return UITableViewCell() }
 //        let characters = characters[indexPath.row]
 //        cell.configure(with: characters)
         let characterUrl = episode?.characters?[indexPath.row]
