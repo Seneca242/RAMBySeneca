@@ -26,6 +26,9 @@ class EpisodeDetailViewController: UIViewController {
             alpha: 1
         )
         title = episode?.episode
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func fetchCharacters(url: [String]) {
@@ -76,6 +79,10 @@ extension EpisodeDetailViewController: UITableViewDataSource {
         }
         return cell
     }
-    
-    
+}
+
+extension EpisodeDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

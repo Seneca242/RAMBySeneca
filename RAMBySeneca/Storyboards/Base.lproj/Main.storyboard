@@ -175,6 +175,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.088859212014931133" green="0.090021091648859561" blue="0.24105187618371215" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="characterImageView" destination="QMq-fQ-2Cg" id="bGF-pF-gBI"/>
+                                            <outlet property="nameLabel" destination="yR7-lL-Ib9" id="3Qa-Zs-zb5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
