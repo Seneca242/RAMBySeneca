@@ -22,10 +22,10 @@ class CharacterTableViewCell: UITableViewCell {
     func configure(with character: Characters?) {
         nameLabel.text = character?.name
         
-        ImageNetworkManager.shared.fetchImage(from: character?.image ?? "") { result in
+        ImageNetworkManager.shared.fetchImage(from: character?.image ?? "") { [weak self] result in
             switch result {
             case .success(let imageData):
-                self.characterImageView.image = UIImage(data: imageData)
+                self?.characterImageView.image = UIImage(data: imageData)
             case .failure(let error):
                 print(error)
             }
